@@ -15,6 +15,7 @@ import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.example.commsci_android1.DisplayMessageActivity2;
+import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -34,13 +35,19 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             }
         });
         Button b = (Button) root.findViewById(R.id.goact2);
+        Button c = (Button) root.findViewById(R.id.gointercom);
         b.setOnClickListener(this);
+        c.setOnClickListener(this);
         return root;
     }
     public void onClick(View v) {
         //v.getId(R.id.goact2);
         if (v.getId() == R.id.goact2) {
             Intent intent = new Intent(getActivity(), DisplayMessageActivity2.class);
+
+            startActivity(intent);
+        }else if(v.getId() == R.id.gointercom){
+            Intent intent = new Intent(getActivity(), Intercom.class);
 
             startActivity(intent);
         }

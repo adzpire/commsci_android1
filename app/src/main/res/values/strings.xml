@@ -5,23 +5,15 @@
     <string name="title_notifications">Notifications</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Send</string>
-    <string name="action_settings">ตั้งค่า</string>
-    <string name="title_activity_display_message">DisplayMessageActivity</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="hello_first_fragment">Hello first fragment</string>
-    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="t1_menu">ตั้งค่า</string>
     <string name="t0_menu">เกี่ยวกับแอพ</string>
-    <string name="title_student">นักศึกษา</string>
     <string name="title_notice">แจ้งเตือน</string>
     <string name="title_facinfo">ข้อมูลคณะ</string>
     <string name="title_profile">โปรไฟล์</string>
     <string name="title_calendar">ปฏิทิน</string>
+    <string name="intercomButtn">IntercomList</string>
     <!-- Strings used for fragments for navigation -->
 
     <!-- Strings used for fragments for navigation -->
