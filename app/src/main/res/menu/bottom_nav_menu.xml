@@ -8,7 +8,7 @@
         android:title="@string/title_notice" />
 
     <item
-        android:id="@+id/navigation_student"
+        android:id="@+id/navigation_generalinfo"
         android:icon="@android:drawable/btn_star_big_on"
         android:title="@string/title_facinfo" />
 

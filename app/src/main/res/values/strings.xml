@@ -14,6 +14,10 @@
     <string name="title_profile">โปรไฟล์</string>
     <string name="title_calendar">ปฏิทิน</string>
     <string name="intercomButtn">IntercomList</string>
+    <string name="modernbigdash">My DashBoard</string>
+    <string name="modernsubdash">12 items</string>
+    <string name="employee">StaffList</string>
+    <string name="title_genaralinfo">GeneralInformation</string>
     <!-- Strings used for fragments for navigation -->
 
     <!-- Strings used for fragments for navigation -->

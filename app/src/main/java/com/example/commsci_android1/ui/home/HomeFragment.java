@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import com.example.commsci_android1.DashboardModern;
 import com.example.commsci_android1.DisplayMessageActivity2;
 import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
@@ -36,8 +37,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
         Button b = (Button) root.findViewById(R.id.goact2);
         Button c = (Button) root.findViewById(R.id.gointercom);
+        Button d = (Button) root.findViewById(R.id.gomoderndash);
         b.setOnClickListener(this);
         c.setOnClickListener(this);
+        d.setOnClickListener(this);
         return root;
     }
     public void onClick(View v) {
@@ -48,6 +51,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.gointercom){
             Intent intent = new Intent(getActivity(), Intercom.class);
+            intent.putExtra("URL_DATA", "http://comm-sci.pn.psu.ac.th/office/inventory/default/indexjson");
+            startActivity(intent);
+        }else if(v.getId() == R.id.gomoderndash){
+            Intent intent = new Intent(getActivity(), DashboardModern.class);
 
             startActivity(intent);
         }

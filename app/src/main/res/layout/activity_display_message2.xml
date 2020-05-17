@@ -22,9 +22,9 @@
         app:layout_constraintVertical_bias="0.07" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycleView2"
+        android:id="@+id/locaRCV"
         android:layout_width="match_parent"
-        android:layout_height="601dp"
+        android:layout_height="match_parent"
         android:layout_marginTop="28dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
