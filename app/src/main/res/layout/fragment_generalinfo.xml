@@ -24,10 +24,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/FrgGeneralinfoRCV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="641dp"
+        android:layout_marginTop="5dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_frgGeneralinfo"
         tools:itemCount="3"

@@ -1,6 +1,7 @@
 package com.example.commsci_android1.ui.generalinfo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.commsci_android1.DataLocationItem;
+import com.example.commsci_android1.DetailLocation;
+import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
 
 import java.util.List;
@@ -39,11 +42,14 @@ public class AdapterLocationFragment extends RecyclerView.Adapter<AdapterLocatio
         final DataLocation dataLocation = dataLocations.get(position);
         holder.headlocaAdpt.setText(dataLocation.getHead());
         holder.desclocaAdpt.setText(dataLocation.getDesc());
+        holder.desclocaAdpt.setText(dataLocation.getId());
 
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, dataLocation.getHead(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(context, DetailLocation.class);
+                intent.putExtra("URL_DATA", "http://comm-sci.pn.psu.ac.th/office/inventory/default/viewjson?id=" + dataLocation.getId());
+                context.startActivity(intent);
             }
         });
     }

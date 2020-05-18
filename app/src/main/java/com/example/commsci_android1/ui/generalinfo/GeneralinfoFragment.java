@@ -61,6 +61,7 @@ public class GeneralinfoFragment extends Fragment {
 
         listItems = new ArrayList<>();
         loadRCVData();
+
         return root;
     }
 
@@ -83,7 +84,8 @@ public class GeneralinfoFragment extends Fragment {
                                 DataLocation item = new DataLocation(
                                         jo.optString("loc_name"),
                                         jo.optString("loc_name_eng"),
-                                        jo.optString("floor")
+                                        jo.optString("floor"),
+                                        jo.optString("id")
                                 );
                                 listItems.add(item);
                             }
@@ -108,5 +110,7 @@ public class GeneralinfoFragment extends Fragment {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this.getContext());
         requestQueue.add(stringRequest);
+
     }
+
 }
