@@ -12,8 +12,8 @@ public class DisplayMessageActivity2backup extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display_message2);
 //View v = null;
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleView2);
-        ListAdapter listAdapter = new ListAdapter();
-        recyclerView.setAdapter(listAdapter);
+//        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recycleView2);
+//        ListAdapter listAdapter = new ListAdapter();
+//        recyclerView.setAdapter(listAdapter);
     }
 }

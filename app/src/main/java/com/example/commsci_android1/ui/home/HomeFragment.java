@@ -18,6 +18,7 @@ import com.example.commsci_android1.DashboardModern;
 import com.example.commsci_android1.DisplayMessageActivity2;
 import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
+import com.example.commsci_android1.activity.GalleryActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -38,9 +39,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button b = (Button) root.findViewById(R.id.goact2);
         Button c = (Button) root.findViewById(R.id.gointercom);
         Button d = (Button) root.findViewById(R.id.gomoderndash);
+        Button e = (Button) root.findViewById(R.id.gogalbtn);
         b.setOnClickListener(this);
         c.setOnClickListener(this);
         d.setOnClickListener(this);
+        e.setOnClickListener(this);
         return root;
     }
     public void onClick(View v) {
@@ -55,6 +58,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }else if(v.getId() == R.id.gomoderndash){
             Intent intent = new Intent(getActivity(), DashboardModern.class);
+
+            startActivity(intent);
+        }else if(v.getId() == R.id.gogalbtn){
+            Intent intent = new Intent(getActivity(), GalleryActivity.class);
 
             startActivity(intent);
         }

@@ -3,15 +3,24 @@
     package="com.example.commsci_android1">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
+        android:name=".app.AppController"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".DetailLocation"></activity>
+        <activity
+            android:name=".activity.GalleryActivity"
+            android:parentActivityName=".MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".DetailLocation" />
         <activity
             android:name=".DashboardModern"
             android:parentActivityName=".MainActivity">
@@ -19,7 +28,7 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
-        <activity android:name=".Intercom"></activity>
+        <activity android:name=".Intercom" />
         <activity
             android:name=".DisplayMessageActivity2"
             android:parentActivityName=".MainActivity">
@@ -40,4 +49,19 @@
         </activity>
     </application>
 
+<!--    <application-->
+<!--        android:name="com.example.commsci_android1.app.AppController"-->
+<!--        android:allowBackup="true"-->
+<!--        android:icon="@mipmap/ic_launcher"-->
+<!--        android:label="@string/app_name"-->
+<!--        android:supportsRtl="true"-->
+<!--        android:theme="@style/AppTheme">-->
+<!--        <activity android:name="com.example.commsci_android1.activity.GalleryActivity">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+<!--        </activity>-->
+<!--    </application>-->
 </manifest>
