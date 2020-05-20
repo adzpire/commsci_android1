@@ -38,8 +38,8 @@ public class SlideshowDialogFragment extends DialogFragment {
     private MyViewPagerAdapter myViewPagerAdapter;
     private TextView lblCount, lblTitle, lblDate;
     private int selectedPosition = 0;
-    String setImgLink = "";
-    ImageView share, download;
+    private String setImgLink = "";
+    private ImageView share, download;
 
     static SlideshowDialogFragment newInstance() {
         SlideshowDialogFragment f = new SlideshowDialogFragment();
@@ -174,8 +174,9 @@ public class SlideshowDialogFragment extends DialogFragment {
         public MyViewPagerAdapter() {
         }
 
+        @NonNull
         @Override
-        public Object instantiateItem(ViewGroup container, int position) {
+        public Object instantiateItem(@NonNull ViewGroup container, int position) {
 
             layoutInflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             assert layoutInflater != null;

@@ -16,6 +16,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.commsci_android1.DashboardModern;
 import com.example.commsci_android1.DisplayMessageActivity2;
+import com.example.commsci_android1.GallerylistActivity;
 import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
 import com.example.commsci_android1.activity.GalleryActivity;
@@ -40,36 +41,39 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button c = (Button) root.findViewById(R.id.gointercom);
         Button d = (Button) root.findViewById(R.id.gomoderndash);
         Button e = (Button) root.findViewById(R.id.gogalbtn);
+        Button f = (Button) root.findViewById(R.id.button_1);
         b.setOnClickListener(this);
         c.setOnClickListener(this);
         d.setOnClickListener(this);
         e.setOnClickListener(this);
+        f.setOnClickListener(this);
+
         return root;
     }
     public void onClick(View v) {
         //v.getId(R.id.goact2);
-        if (v.getId() == R.id.goact2) {
+        int id = v.getId();
+//        if (v.getId() == R.id.goact2) {
+        if (id == R.id.goact2) {
             Intent intent = new Intent(getActivity(), DisplayMessageActivity2.class);
 
             startActivity(intent);
-        }else if(v.getId() == R.id.gointercom){
+        }else if(id == R.id.gointercom){
             Intent intent = new Intent(getActivity(), Intercom.class);
             intent.putExtra("URL_DATA", "http://comm-sci.pn.psu.ac.th/office/inventory/default/indexjson");
             startActivity(intent);
-        }else if(v.getId() == R.id.gomoderndash){
+        }else if(id == R.id.gomoderndash){
             Intent intent = new Intent(getActivity(), DashboardModern.class);
 
             startActivity(intent);
-        }else if(v.getId() == R.id.gogalbtn){
+        }else if(id == R.id.gogalbtn){
             Intent intent = new Intent(getActivity(), GalleryActivity.class);
+
+            startActivity(intent);
+        }else if(id == R.id.button_1){
+            Intent intent = new Intent(getActivity(), GallerylistActivity.class);
 
             startActivity(intent);
         }
     }
-//    public void goac2(View view) {
-//        // Do something in response to button
-//        Intent intent = new Intent(getActivity(), DisplayMessageActivity2.class);
-//
-//        startActivity(intent);
-//    }
 }

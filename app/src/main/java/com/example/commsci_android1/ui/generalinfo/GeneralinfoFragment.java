@@ -37,7 +37,8 @@ import java.util.Objects;
 public class GeneralinfoFragment extends Fragment {
 
     private GeneralinfoViewModel generalinfoViewModel;
-    private static final String URL_DATA ="http://comm-sci.pn.psu.ac.th/office/inventory/default/indexjson";
+//    private static final String URL_DATA ="http://comm-sci.pn.psu.ac.th/office/inventory/default/indexjson";
+    private static final String URL_DATA ="https://commsci.psu.ac.th/office/intercom/default/indexjson";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<DataLocation> listItems;

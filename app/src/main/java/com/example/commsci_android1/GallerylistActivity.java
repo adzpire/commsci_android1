@@ -6,6 +6,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -14,6 +16,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.commsci_android1.model.DataGalleryItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -22,27 +25,22 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
-public class DisplayMessageActivity2 extends AppCompatActivity {
+public class GallerylistActivity extends AppCompatActivity {
 
     private static final String URL_DATA ="https://api.commsci.psu.ac.th/rest/www/album?page=1";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
-    private List<DataLocationItem> listItems;
-
-    public DisplayMessageActivity2() {
-    }
-
+    private List<DataGalleryItem> listItems;
+    TextView textView;
+    String data = "bghgh";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_display_message2);
-//View v = null;
-        recyclerView = (RecyclerView) findViewById(R.id.locaRCV);
+        setContentView(R.layout.activity_gallerylist);
+        textView = findViewById(R.id.title_head);
+        recyclerView = findViewById(R.id.galleryRCV);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        ListAdapter listAdapter = new ListAdapter();
-//        recyclerView.setAdapter(listAdapter);
 
         listItems = new ArrayList<>();
         loadRCVData();
@@ -61,19 +59,28 @@ public class DisplayMessageActivity2 extends AppCompatActivity {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            //JSONObject jsonObject = new JSONObject(response);
-                            JSONArray ja = new JSONArray(response);
-                            for(int i = 0; i < ja.length(); i++){
-                                JSONObject jo = (JSONObject) ja.get(i);
-                                DataLocationItem item = new DataLocationItem(
-                                        jo.optString("loc_name"),
-                                        jo.optString("loc_name_eng"),
-                                        jo.optString("floor")
+                            JSONObject jsonObject = new JSONObject(response);
+//                            JSONArray json2 = jsonObject.getJSONArray("items");
+                            JSONArray array =jsonObject.getJSONArray("items");
+//                            Log.println(jsonObject);
+//                            JSONArray array = json2.getJSONArray("items");
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject jo = array.getJSONObject(i);
+//                                data = data + jo.optString("title");
+//                                JSONObject jo = (JSONObject) array.getJSONObject(i);
+//                                Log.e(TAG, "JSON Object is = " + jsonObject);
+                                //Toast.makeText(this, jo.getString("Name"), Toast.LENGTH_LONG).show();
+                                DataGalleryItem item = new DataGalleryItem(
+                                        jo.optString("title"),
+                                        jo.optString("content"),
+                                        jo.optString("image")
                                 );
                                 listItems.add(item);
                             }
-
-                            adapter = new AdapterLocation(listItems, getApplicationContext());
+                            //textView.setText(data);
+//                            adapter = new AdapterGalleryList(listItems, getApplicationContext());
+                            adapter = new AdapterGalleryList(listItems, getApplicationContext());
+                            //adapter = new AdapterGalleryList(listItems, getApplicationContext());
                             recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
