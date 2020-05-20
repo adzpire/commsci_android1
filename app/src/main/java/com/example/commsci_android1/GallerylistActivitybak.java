@@ -1,15 +1,13 @@
 package com.example.commsci_android1;
 
-import androidx.annotation.NonNull;
+import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.ProgressDialog;
-import android.os.Bundle;
-import android.util.Log;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -26,42 +24,25 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GallerylistActivity extends AppCompatActivity {
+public class GallerylistActivitybak extends AppCompatActivity {
 
-   // private static final String URL_DATA ="https://api.commsci.psu.ac.th/rest/www/album?page=1";
+    private static final String URL_DATA ="https://api.commsci.psu.ac.th/rest/www/album?page=1";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<DataGalleryItem> listItems;
-    private LinearLayoutManager linearLayoutManager;
     TextView textView;
     String data = "bghgh";
-    public String url;
-
-    public int page = 1;
-    public int totalItemCount;
-    public int firstVisibleItem;
-    public int visibleItemCount;
-    public int previoustotal;
-    private boolean load = true;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gallerylist);
-
-
         textView = findViewById(R.id.title_head);
         recyclerView = findViewById(R.id.galleryRCV);
         recyclerView.setHasFixedSize(true);
-        linearLayoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         listItems = new ArrayList<>();
-
-        adapter = new AdapterGalleryList(listItems, getApplicationContext());
-        recyclerView.setAdapter(adapter);
         loadRCVData();
-
-        pagination();
     }
 
     private void loadRCVData(){
@@ -69,9 +50,9 @@ public class GallerylistActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Loading Data...");
         progressDialog.show();
-        url = "https://api.commsci.psu.ac.th/rest/www/album?page="+page;
+
         StringRequest stringRequest = new StringRequest(Request.Method.GET,
-                url,
+                URL_DATA,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
@@ -97,10 +78,9 @@ public class GallerylistActivity extends AppCompatActivity {
                             }
                             //textView.setText(data);
 //                            adapter = new AdapterGalleryList(listItems, getApplicationContext());
-//                            adapter = new AdapterGalleryList(listItems, getApplicationContext());
-                            adapter.notifyDataSetChanged();
+                            adapter = new AdapterGalleryList(listItems, getApplicationContext());
                             //adapter = new AdapterGalleryList(listItems, getApplicationContext());
-//                            recyclerView.setAdapter(adapter);
+                            recyclerView.setAdapter(adapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -116,46 +96,7 @@ public class GallerylistActivity extends AppCompatActivity {
                 }
         );
 
-//        RequestQueue requestQueue = Volley.newRequestQueue(this);
-//        requestQueue.add(stringRequest);
-        MySingleton.getInstance(getApplicationContext()).addToRequestQueue(stringRequest);
-
-//        pagination();
-    }
-
-    private void pagination() {
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
-            @Override
-            public void onScrollStateChanged(@NonNull RecyclerView recyclerView, int newState) {
-                super.onScrollStateChanged(recyclerView, newState);
-            }
-
-            @Override
-            public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
-//                Toast.makeText(getApplicationContext(), "bgbgb", Toast.LENGTH_LONG).show();
-                if(dy > 0){
-
-                    visibleItemCount = linearLayoutManager.getChildCount();
-                    totalItemCount = linearLayoutManager.getItemCount();
-                    firstVisibleItem = linearLayoutManager.findFirstVisibleItemPosition();
-
-                    //Toast.makeText(getApplicationContext(), "bgbgb", Toast.LENGTH_LONG).show();
-                }
-
-                if(load){
-                    if (totalItemCount > previoustotal) {
-                        previoustotal = totalItemCount;
-                        page++;
-                        load = false;
-                    }
-                }
-
-                if(!load && (firstVisibleItem + visibleItemCount) >= totalItemCount){
-                    loadRCVData();
-                    load = true;
-                }
-            }
-        });
+        RequestQueue requestQueue = Volley.newRequestQueue(this);
+        requestQueue.add(stringRequest);
     }
 }
