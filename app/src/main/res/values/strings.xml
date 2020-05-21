@@ -16,6 +16,9 @@
     <string name="modernsubdash">12 items</string>
     <string name="employee">StaffList</string>
     <string name="title_genaralinfo">GeneralInformation</string>
+    <string name="take_barcode_picture">ถ่ายรูป</string>
+    <string name="scan_barcode">สแกน</string>
+    <string name="open_camera">เปิดกล้อง</string>
     <!-- Strings used for fragments for navigation -->
 
     <!-- Strings used for fragments for navigation -->

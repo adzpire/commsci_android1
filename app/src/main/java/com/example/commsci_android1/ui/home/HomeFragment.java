@@ -19,6 +19,7 @@ import com.example.commsci_android1.DisplayMessageActivity2;
 import com.example.commsci_android1.GallerylistActivity;
 import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.R;
+import com.example.commsci_android1.ScannerActivity;
 import com.example.commsci_android1.activity.GalleryActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -42,11 +43,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button d = (Button) root.findViewById(R.id.gomoderndash);
         Button e = (Button) root.findViewById(R.id.gogalbtn);
         Button f = (Button) root.findViewById(R.id.button_1);
+        Button g = (Button) root.findViewById(R.id.go2scanner);
         b.setOnClickListener(this);
         c.setOnClickListener(this);
         d.setOnClickListener(this);
         e.setOnClickListener(this);
         f.setOnClickListener(this);
+        g.setOnClickListener(this);
 
         return root;
     }
@@ -72,6 +75,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }else if(id == R.id.button_1){
             Intent intent = new Intent(getActivity(), GallerylistActivity.class);
+
+            startActivity(intent);
+        }else if(id == R.id.go2scanner){
+            Intent intent = new Intent(getActivity(), ScannerActivity.class);
 
             startActivity(intent);
         }

@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
 
     <application
         android:name=".app.AppController"
@@ -13,7 +19,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GallerylistActivity"></activity>
+        <activity android:name=".ScannedBarcodeActivity"></activity>
+        <activity android:name=".PictureBarcodeActivity" />
+        <activity android:name=".ScannerActivity">
+            <meta-data
+                android:name="com.google.android.gms:play-services-vision:20.0.0"
+                android:value="barcode" />
+        </activity>
+        <activity android:name=".GallerylistActivity" />
         <activity
             android:name=".activity.GalleryActivity"
             android:parentActivityName=".MainActivity">
@@ -48,6 +61,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+<provider
+
+    android:name="androidx.core.content.FileProvider"
+    android:authorities="com.mydomain.fileprovider"
+    android:exported="false"
+    android:grantUriPermissions="true">
+    <meta-data
+        android:name="android.support.FILE_PROVIDER_PATHS"
+        android:resource="@xml/provider_paths" />
+
+</provider>
     </application>
 
 </manifest>
