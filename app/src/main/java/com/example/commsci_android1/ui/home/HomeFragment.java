@@ -21,6 +21,7 @@ import com.example.commsci_android1.Intercom;
 import com.example.commsci_android1.LoginActivity;
 import com.example.commsci_android1.R;
 import com.example.commsci_android1.ScannerActivity;
+import com.example.commsci_android1.Sharepref;
 import com.example.commsci_android1.activity.GalleryActivity;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -46,6 +47,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         Button f = (Button) root.findViewById(R.id.button_1);
         Button g = (Button) root.findViewById(R.id.go2scanner);
         Button h = (Button) root.findViewById(R.id.go2login);
+        Button i = (Button) root.findViewById(R.id.goshareprefs);
         b.setOnClickListener(this);
         c.setOnClickListener(this);
         d.setOnClickListener(this);
@@ -53,6 +55,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         f.setOnClickListener(this);
         g.setOnClickListener(this);
         h.setOnClickListener(this);
+        i.setOnClickListener(this);
 
         return root;
     }
@@ -86,6 +89,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             startActivity(intent);
         }else if(id == R.id.go2login){
             Intent intent = new Intent(getActivity(), LoginActivity.class);
+
+            startActivity(intent);
+        }else if(id == R.id.goshareprefs){
+            Intent intent = new Intent(getActivity(), Sharepref.class);
 
             startActivity(intent);
         }
