@@ -4,24 +4,21 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.commsci_android1.model.DataPageLink;
+public class AdapterModerngridbackup extends RecyclerView.Adapter<AdapterModerngridbackup.ViewHolder> {
 
-public class AdapterModerngrid extends RecyclerView.Adapter<AdapterModerngrid.ViewHolder> {
-
-//    private String[] mData;
+    private String[] mData;
     private LayoutInflater mInflater;
     private ItemClickListener mClickListener;
 
     // data is passed into the constructor
-    AdapterModerngrid(Context context) {
+    AdapterModerngridbackup(Context context, String[] data) {
         this.mInflater = LayoutInflater.from(context);
-//        this.mData = data;
+        this.mData = data;
     }
 
     // inflates the cell layout from xml when needed
@@ -35,25 +32,23 @@ public class AdapterModerngrid extends RecyclerView.Adapter<AdapterModerngrid.Vi
     // binds the data to the TextView in each cell
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.myTextView.setText(DataPageLink.mainpage[position][0].toString());
-        holder.itemImg.setImageResource((Integer) DataPageLink.mainpage[position][1]);
+        holder.myTextView.setText(mData[position]);
     }
 
     // total number of cells
     @Override
     public int getItemCount() {
-        return DataPageLink.mainpage.length;
+        return mData.length;
     }
 
 
     // stores and recycles views as they are scrolled off screen
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView myTextView;
-        private ImageView itemImg;
+
         ViewHolder(View itemView) {
             super(itemView);
             myTextView = itemView.findViewById(R.id.info_text);
-            itemImg = itemView.findViewById(R.id.iconImage);
             itemView.setOnClickListener(this);
         }
 
@@ -64,8 +59,8 @@ public class AdapterModerngrid extends RecyclerView.Adapter<AdapterModerngrid.Vi
     }
 
     // convenience method for getting data at click position
-    String[] getItem(int id) {
-        return new String[]{(String) DataPageLink.mainpage[id][2], (String) DataPageLink.mainpage[id][3]};
+    String getItem(int id) {
+        return mData[id];
     }
 
     // allows clicks events to be caught

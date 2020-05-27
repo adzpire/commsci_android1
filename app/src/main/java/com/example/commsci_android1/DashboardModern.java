@@ -56,13 +56,13 @@ public class DashboardModern extends AppCompatActivity implements AdapterModerng
         RecyclerView recyclerView = findViewById(R.id.rvNumbers);
         int numberOfColumns = 2;
         recyclerView.setLayoutManager(new GridLayoutManager(this, numberOfColumns));
-        adapter = new AdapterModerngrid(this, data);
+        adapter = new AdapterModerngrid(this);
         adapter.setClickListener(this);
         recyclerView.setAdapter(adapter);
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Log.i("TAG", "You clicked number " + adapter.getItem(position) + ", which is at cell position " + position);
+        Log.i("TAG", "You clicked number " + adapter.getItem(position)[0] + ", which is at cell position " + adapter.getItem(position)[1]);
     }
 }
