@@ -25,6 +25,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.commsci_android1.DataLocationItem;
 import com.example.commsci_android1.R;
 import com.example.commsci_android1.ui.dashboard.DashboardViewModel;
+import com.example.commsci_android1.ui.notifications.DataIntercom;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -37,8 +38,8 @@ import java.util.Objects;
 public class GeneralinfoFragment extends Fragment {
 
     private GeneralinfoViewModel generalinfoViewModel;
-//    private static final String URL_DATA ="http://comm-sci.pn.psu.ac.th/office/inventory/default/indexjson";
-    private static final String URL_DATA ="https://commsci.psu.ac.th/office/intercom/default/indexjson";
+    private static final String URL_DATA ="https://commsci.psu.ac.th/office/location/rest/index";
+//    private static final String URL_DATA ="https://commsci.psu.ac.th/office/intercom/default/indexjson";
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private List<DataLocation> listItems;
@@ -78,10 +79,10 @@ public class GeneralinfoFragment extends Fragment {
                     public void onResponse(String response) {
                         progressDialog.dismiss();
                         try {
-                            //JSONObject jsonObject = new JSONObject(response);
-                            JSONArray ja = new JSONArray(response);
-                            for(int i = 0; i < ja.length(); i++){
-                                JSONObject jo = (JSONObject) ja.get(i);
+                            JSONObject jsonObject = new JSONObject(response);
+                            JSONArray array =jsonObject.getJSONArray("items");
+                            for(int i = 0; i < array.length(); i++){
+                                JSONObject jo = array.getJSONObject(i);
                                 DataLocation item = new DataLocation(
                                         jo.optString("loc_name"),
                                         jo.optString("loc_name_eng"),
@@ -89,6 +90,17 @@ public class GeneralinfoFragment extends Fragment {
                                         jo.optString("id")
                                 );
                                 listItems.add(item);
+                            //JSONObject jsonObject = new JSONObject(response);
+//                            JSONArray ja = new JSONArray(response);
+//                            for(int i = 0; i < ja.length(); i++){
+//                                JSONObject jo = (JSONObject) ja.get(i);
+//                                DataLocation item = new DataLocation(
+//                                        jo.optString("loc_name"),
+//                                        jo.optString("loc_name_eng"),
+//                                        jo.optString("floor"),
+//                                        jo.optString("id")
+//                                );
+//                                listItems.add(item);
                             }
 
 //                            adapter = new AdapterLocation(listItems, getContext());
